@@ -5,22 +5,45 @@ import TodoList from './TodoList';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { list: [], };
+    this.state = { 
+      list: [],
+      inputText: ''
+    };
 
     this.addTodo = this.addTodo.bind(this);
+    this.modifyTodo = this.modifyTodo.bind(this);
     this.deleteTodo = this.deleteTodo.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);  
   }
 
+  handleChange(event) {
+    this.setState({ inputText: event.target.value });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.addTodo(this.state.inputText);
+    
+  }
 
   addTodo(value) {
     const list = this.state.list;
     list.push(value);
-    this.setState({ list: list });
+    this.setState({ 
+      list: list, 
+      inputText: ''
+    });
   }
 
   modifyTodo(index) {
-    const todoModify = this.state.list[index];
-
+    const list = this.state.list;
+    const todoText = list[index];
+    list.splice(index, 1);
+    this.setState({
+      list: list,
+      inputText: todoText
+    });
   }
 
   deleteTodo(index) {
@@ -35,8 +58,16 @@ class App extends Component {
     return (
       <div>
         <h1>Super Awesome Todo List</h1>
-        <AddTodo addTodo={this.addTodo} />
-        <TodoList list={this.state.list} deleteTodo={this.deleteTodo} />
+        <AddTodo 
+          handleSubmit={this.handleSubmit} 
+          handleChange={this.handleChange} 
+          inputText={this.state.inputText} 
+          />
+        <TodoList 
+          list={this.state.list} 
+          deleteTodo={this.deleteTodo} 
+          modifyTodo={this.modifyTodo} 
+          />
       </div>
     );
   }
