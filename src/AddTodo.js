@@ -18,7 +18,7 @@ class AddTodo extends Component {
     event.preventDefault();
     
     // notify App that submission was made.
-    //
+    this.props.addTodo(this.state.val);
     console.log(this.state.val);
     
     // reset text input back to empty
