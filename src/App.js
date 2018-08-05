@@ -8,19 +8,28 @@ class App extends Component {
 
     this.state = { list: [] }
     this.addTodo = this.addTodo.bind(this);
+    this.deleteTodo = this.deleteTodo.bind(this);
   }
 
   addTodo(value) {
     const list = this.state.list;
     // const { list } = this.state;
-    list.push(value);
-    this.setState({ list: list })
+    if (value) {
+      list.push(value);
+      this.setState({ list: list })
+    }
+  }
+  
+  deleteTodo(id) {
+    const list = this.state.list;
+    const results = [...list.slice(0, id), ...list.slice(id + 1)];
+    this.setState({list: results});
   }
   
   render() {
     return (<div>
       <AddTodo addTodo={this.addTodo} />
-      <TodoList list={this.state.list}/>
+      <TodoList list={this.state.list} deleteTodo={this.deleteTodo} />
     </div>);
   }
 }
