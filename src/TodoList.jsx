@@ -6,17 +6,9 @@ class TodoList extends Component {
   }
 
   render() {
-    const { list, deleteTodo } = this.props;
-    return (
-      <div>
-        {list.map((todo, i) => (
-          <div key={`todo${i}`}>
-            {todo}
-            <button type="button" onClick={() => deleteTodo(i)}>del</button>
-          </div>
-        ))}
-      </div>
-    );
+    // Question 1: Given our list, what do we need to render?
+    // Question 2: Once we have our list rendered, how do we add delete buttons?
+    
   }
 }
 
