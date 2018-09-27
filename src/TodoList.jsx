@@ -10,7 +10,7 @@ class TodoList extends Component {
     return (
       <div>
         {list.map((todo, i) => (
-          <div key={`todo${i}`}>
+          <div key={i}>
             {todo}
             <button type="button" onClick={() => deleteTodo(i)}>del</button>
           </div>

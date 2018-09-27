@@ -12,26 +12,21 @@ class App extends Component {
   }
 
   addTodo(value) {
-    const { list } = this.state;
-    if (value) {
-      this.setState({
-        list: [...list, value],
-      });
-    }
+    // Question: how do we add a todo with the given value, and call setState?
+    
   }
 
   deleteTodo(id) {
-    const { list } = this.state;
-    const results = [...list.slice(0, id), ...list.slice(id + 1)];
-    this.setState({ list: results });
+    // Question: how do we delete a todo with the given id, and call setState?
+    
   }
 
   render() {
-    const { list } = this.state;
+    // Question: what props do we need to pass to AddTodo and TodoList?
     return (
       <Fragment>
-        <AddTodo addTodo={this.addTodo} />
-        <TodoList list={list} deleteTodo={this.deleteTodo} />
+        <AddTodo />
+        <TodoList />
       </Fragment>
     );
   }
