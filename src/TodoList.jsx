@@ -9,10 +9,10 @@ class TodoList extends Component {
     const { list, deleteTodo } = this.props;
     return (
       <div>
-        {list.map((todo, i) => (
-          <div key={i}>
-            {todo}
-            <button type="button" onClick={() => deleteTodo(i)}>del</button>
+        {list.map((todo, idx) => (
+          <div key={todo.id}>
+            {todo.text}
+            <button type="button" onClick={() => deleteTodo(idx, todo.id)}>del</button>
           </div>
         ))}
       </div>

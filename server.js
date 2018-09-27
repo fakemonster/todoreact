@@ -1,10 +1,12 @@
 const express = require('express');
 const { json } = require('body-parser');
+const cors = require('cors');
 
 const Todos = require('./db');
 
 const app = express();
 app.use(json());
+app.use(cors());
 
 app.get('/todos', async (req, res) => {
   try {
@@ -49,4 +51,4 @@ app.delete('/todos/:id', async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log('listening on 3000'));
+app.listen(3005, () => console.log('listening on 3005'));
